@@ -1,22 +1,27 @@
-import React from 'react'
+import { Products } from "../../types/servers"
 
-const ProductItem = () => {
+
+
+type TProductItem = Products
+
+
+const ProductItem = ({title,price,description,image} : TProductItem)  => {
   return (
     <div className='shadow border rounded pb-2'>
         <img 
          className='rounded-t'
-         src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSliAZJq11i0KBl11Knztrg6fH_e3w05vApUg&s'/>
+         src={image}/>
 
-        <div className='flex justify-between flex-row-reverse p-4'>
-            <h3>
-                عنوان محصول
+        <div className='flex justify-between p-4'>
+            <h3 className="line-clamp-1 font-bold w-52">
+               {title}
             </h3>
-            <span>$55</span>
+            <span>${price}</span>
         </div>
 
         <div className='px-4 mt-1'>
-            <p className='line-clamp-2 text-right'>
-            این محصول دارای ویژگی های جذابی میباشد و این متن برای تست است
+            <p className='line-clamp-2 text-right text-gray-500'>
+             {description}
             </p>
         </div>
     </div>

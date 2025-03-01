@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom"
 import Container from "../container/Container"
+import { useGlobalContext } from "../../context/ShoppingCartContext"
 
 const Navbar = () => {
+
+  const {cartQty} = useGlobalContext()
+
   return (
     <>
      <div className="h-14 border-b shadow">
@@ -21,6 +25,7 @@ const Navbar = () => {
          <div>
             <Link to='/cart'>
              <button>سبد خرید</button>
+             <span>{cartQty   !== 0  ?  cartQty : ''}</span>
             </Link>
          </div>
          </div>

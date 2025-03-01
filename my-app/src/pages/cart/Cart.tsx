@@ -1,14 +1,22 @@
 import Button from "../../components/button/Button"
 import CartItem from "../../components/cartItem/CartItem"
 import Container from "../../components/container/Container"
+import { useGlobalContext } from "../../context/ShoppingCartContext"
 
 const Cart = () => {
+
+  const {cartItems} = useGlobalContext()
+
   return (
     <div>
 
     <Container>
         <div>
-         <CartItem/>
+        {
+          cartItems.map((item) => (
+            <CartItem  {...item}/>
+          ))
+        }
         </div>
 
         <div className="bg-gray-200 rounded p-6">

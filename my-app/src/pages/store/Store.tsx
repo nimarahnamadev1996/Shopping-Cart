@@ -5,12 +5,13 @@ import { useEffect, useState } from "react"
 import Container from "../../components/container/Container"
 import ProductItem from "../../components/productItem/ProductItem"
 import { getProducts } from "../../services/api"
+import { Products } from "../../types/servers"
 
 
 
 const Store = () => {
 
-  const [products,setProducts] = useState([])
+  const [products,setProducts] = useState<Products[]>([])
 
   useEffect(() => {
      getProducts().then((result) => {
@@ -27,8 +28,8 @@ const Store = () => {
       <div className="grid grid-cols-4 gap-4 mt-4">
         {
           products.map((item) => (
-            <Link to={`product/${1}`}>
-              <ProductItem/>
+            <Link to={`/product/${item.id}`}>
+              <ProductItem {...item}/>
             </Link>
           ) )
         }
